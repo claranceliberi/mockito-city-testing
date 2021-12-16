@@ -40,7 +40,6 @@ public class CityController {
 
 	@GetMapping("/all")
 	public List<City> getAll() {
-
 		return cityService.getAll();
 	}
 
@@ -54,4 +53,7 @@ public class CityController {
 		City city = cityService.save(dto);
 		return ResponseEntity.status(HttpStatus.CREATED).body(city);
 	}
+
+
+
 }
