@@ -52,5 +52,6 @@ public class CityControllerIntegrationTest {
         ResponseEntity<String> response = restTemplate.postForEntity("/api/cities/add", theCity, String.class);
 
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
+//        assertEquals("City name Mumbai is registered already", response.getBody());
     }
 }
