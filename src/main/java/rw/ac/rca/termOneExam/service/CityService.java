@@ -20,10 +20,13 @@ public class CityService {
 	
 	public Optional<City> getById(long id) {
 		Optional<City> city = cityRepository.findById(id);
-		City foundCity = city.get();
-		if(city.isPresent())
+
+		if(city.isPresent()){
+			City foundCity = city.get();
 			foundCity.setFahrenheit(TempratureFahrenheitConversion.tempToFah(foundCity.getWeather()));
-		return Optional.of(foundCity);
+			return Optional.of(foundCity);
+		}
+		return city;
 	}
 
 	public List<City> getAll() {
@@ -43,8 +46,9 @@ public class CityService {
 
 	public City save(CreateCityDTO dto) {
 		City city =  new City(dto.getName(), dto.getWeather());
-		city.setFahrenheit(TempratureFahrenheitConversion.tempToFah(city.getWeather()));
-		return cityRepository.save(city);
+		City savedCity = cityRepository.save(city);
+		savedCity.setFahrenheit(TempratureFahrenheitConversion.tempToFah(city.getWeather()));
+		return savedCity;
 	}
 	
 

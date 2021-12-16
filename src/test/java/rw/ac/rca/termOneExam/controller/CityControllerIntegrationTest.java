@@ -54,4 +54,6 @@ public class CityControllerIntegrationTest {
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
 //        assertEquals("City name Mumbai is registered already", response.getBody());
     }
+
+
 }
